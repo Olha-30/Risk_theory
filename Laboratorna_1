@@ -1,0 +1,30 @@
+Option Explicit
+
+Private Sub cmd1_Click()
+Dim i, h, f, k1, k2, k3, k4 As Double
+Dim r As String
+i = txt1.Value
+k1 = txt2.Value
+k2 = txt3.Value
+k3 = txt4.Value
+k4 = txt5.Value
+  h = House(i, k2, k3)
+    f = Forest(i, k1, k4)
+      r = Result(h, f)
+End Sub
+Function House(i, k2, k3)
+House = i * k2 + (1 - i) * k3
+txt7.Value = House
+End Function
+Function Forest(i, k1, k4)
+Forest = i * k1 + (1 - i) * k4
+txt8.Value = Forest
+End Function
+Function Result(h, f)
+If h > f Then
+   Result = "Stay at home:("
+      Else
+         Result = "Yes! Lets go to a picnic!"
+End If
+txt9.Value = Result
+End Function
