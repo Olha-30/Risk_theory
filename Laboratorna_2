@@ -1,0 +1,77 @@
+#include <iostream>
+#include <math.h>
+
+
+using namespace std;
+
+int main()
+{
+    float p_A1, p_A2, p_A3, r_A1, r_A2, r_A3, price_A;
+    float p_B1, p_B2, p_B3, r_B1, r_B2, r_B3, price_B;
+    float p_C1, p_C2, p_C3, r_C1, r_C2, r_C3, price_C;
+    int  lesion, Risk_A1,Risk_A2,Risk_A3, Risk_B1, Risk_B2, Risk_B3, Risk_C1, Risk_C2, Risk_C3,l_A1, l_A2, l_A3, l_B1, l_B2, l_B3, l_C1, l_C2, l_C3;
+    cout << "First company A.Link" << endl;
+    cout << "Enter 3 periods : " << endl;
+    cin >> r_A1  >> r_A2 >> r_A3;
+    cout << "Enter probabilities : " << endl;
+    cin >> p_A1 >> p_A2 >> p_A3;
+    cout << " Enter price : ";
+    cin >> price_A ;
+    cout << "Second company B.Ltd" << endl;
+    cout << "Enter 3 periods: " << endl;
+    cin >> r_B1  >> r_B2 >> r_B3;
+    cout << "Enter probabilities : " << endl;
+    cin >> p_B1 >> p_B2 >> p_B3;
+    cout << " Enter price : ";
+    cin >> price_B;
+    cout << "Third company A.T.C" << endl;
+    cout << "Enter 3 periods: " << endl;
+    cin >> r_C1  >> r_C2 >> r_C3;
+    cout << "Enter probabilities : " << endl;
+    cin >> p_C1 >> p_C2 >> p_C3;
+    cout << " Enter price : ";
+    cin >> price_C;
+    cout << "Enter lesion "<< endl;
+    cin >> lesion;
+    Risk_A1 = (1-p_A1)* price_A;
+    Risk_A2 = (1-p_A2)* price_A;
+    Risk_A3 = (1-p_A3)* price_A;
+    Risk_B1 = (1-p_B1)* price_B;
+    Risk_B2 = (1-p_B2)* price_B;
+    Risk_B3 = (1-p_B3)* price_B;
+    Risk_C1 = (1-p_C1)* price_C;
+    Risk_C2 = (1-p_C2)* price_C;
+    Risk_C3 = (1-p_C3)* price_C;
+    cout << " Risks" << endl;
+    cout << Risk_A1 << " " << Risk_A2 << " " << Risk_A3 << endl;
+    cout << Risk_B1 << " " << Risk_B2 << " " <<  Risk_B3 << endl;
+    cout << Risk_C1 << " " << Risk_C2 << " " << Risk_C3 << endl;
+    l_A1 = Risk_A1 + r_A1 * lesion;
+    l_A2 = Risk_A2 + r_A2 * lesion;
+    l_A3 = Risk_A3 + r_A3 * lesion;
+    l_B1 = Risk_B1 + r_B1 * lesion;
+    l_B2 = Risk_B2 + r_B2 * lesion;
+    l_B3 = Risk_B3 + r_B3 * lesion;
+    l_C1 = Risk_C1 + r_C1 * lesion;
+    l_C2 = Risk_C2 + r_C2 * lesion;
+    l_C3 = Risk_C3 + r_C3 * lesion;
+    cout << "Risk and lesion " << endl;
+    cout << l_A1 << " "<< l_A2 << " " <<  l_A3 << endl;
+    cout << l_B1 << " " << l_B2 << " " << l_B3 << endl;
+    cout << l_C1 << " " <<  l_C2 << " " << l_C3 << endl;
+
+    int m[9] = {l_A1, l_A2, l_A3,l_B1, l_B2, l_B3, l_C1, l_C2, l_C3 };
+    int miin = m[0];
+    for ( int i = 0; i<9; ++i)
+    {
+        if (m[i] < miin)
+        {
+            miin = m[i];
+        }
+    }
+ cout << " Best choice for Ukraine is : " << miin << endl;
+
+    return 0;
+
+}
+
