@@ -1,0 +1,65 @@
+#include <iostream>
+#include <math.h>
+
+
+using namespace std;
+
+int main()
+{   //Variant 1
+    double x1, p1, y1;
+    double x2, p2, y2;
+    double  L1, L2, UL1, UL2, D1, D2, pi1, pi2;
+    cout << "Input first lottery" << endl;
+    cout << " Enter x minimum:  " << endl;
+    cin >> x1;
+    cout << "Enter p: " << endl;
+    cin >> p1;
+    cout << "Enter x maximum: " << endl;
+    cin >> y1;
+    cout << "Input second lottery" << endl;
+    cout << " Enter x minimum:  " << endl;
+    cin >> x2;
+    cout << "Enter p: " << endl;
+    cin >> p2;
+    cout << "Enter x maximum: " << endl;
+    cin >> y2;
+    L1 = (x1 + y1) * p1;
+    L2 = (x2 + y2) * p2;
+    UL1 = p1 * (0.1 * (x1 * x1)) + p1 * (0.1 * (y1 * y1));
+    UL2 = p2 * (0.1 * (x2 * x2)) + p2 * (0.1 * (y2 * y2));
+    D1 = sqrt(UL1 / 0.1);
+    D2 = sqrt(UL2 / 0.1);
+    pi1 = L1 - D1;
+    pi2 = L2 - D2;
+    cout << "Lottery 1 : " << endl;
+    cout << " Spodivany vygrash: " << L1 << endl;
+    cout << " Spodivana korysnist: " << UL1 << endl;
+    cout << "Determinovany ekvivalent:  " << D1 << endl;
+    cout << " Premiya za ryzyk: " << pi1 << endl;
+    cout << "Lottery 2 : " << endl;
+    cout << " Spodivany vygrash: " << L2 << endl;
+    cout << " Spodivana korysnist: " << UL2 << endl;
+    cout << "Determinovany ekvivalent:  " << D2 << endl;
+    cout << " Premiya za ryzyk: " << pi2 << endl;
+    if (UL1 > UL2) {
+        cout << "Player will choose first lottery." << endl;
+    }
+    else if (UL1 < UL2) {
+        cout << "Player will choose second lottery." << endl;
+    }
+    else {
+        cout << "Lottery 1 and Loterry 2 are indifferent." << endl;
+    }
+    if (L1 > UL1 || L2 > UL2) {
+        cout << "Person is risk avers "<< endl;
+    } 
+    else if (L1 < UL1 || L2 < UL2)  {
+        cout << "Person is risk lover" << endl;
+    } 
+    else {
+        cout << "Person is risk neutral" << endl;
+    }
+     
+    return 0;
+
+}
