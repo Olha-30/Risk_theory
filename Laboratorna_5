@@ -1,0 +1,172 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+ {   //Variant 1
+    // Task 1, Bayesian criterion, first information situation
+    double  x1, x2, x3, x4, P1, P2, P3, P4, B1;
+    double B2, xx1, xx2, xx3, xx4;
+    double B3, y1, y2, y3, y4;
+    double B4, yy1, yy2, yy3, yy4;
+    double b_max, p1, p2, p3, p4, n, S, S1, S2, S3, S4,k;
+    double pp1, pp2, pp3, pp4, G1, G2, G3, G4, g_max;
+    double  HL1, HLl1, HL2,HLl2, HL3,HLl3, HL4, HLl4, la0;
+    cout << "Task 1" << endl;;
+    cout << "Input first string";
+    cin >> x1 >> x2 >> x3 >> x4;
+    cout << "Input second string";
+    cin >> xx1 >> xx2 >> xx3 >> xx4;
+    cout << "Input third string";
+    cin >> y1 >> y2 >> y3 >> y4;
+    cout << "Input fourth string";
+    cin >> yy1 >> yy2 >> yy3 >> yy4;
+    cout << "Input P1";
+    cin >> P1;
+    cout << "Input P2";
+    cin >> P2;
+    cout << "Input P3";
+    cin >> P3;
+    cout << "Input P4";
+    cin >> P4;
+    B1 = P1 * x1 + P2 * x2 + P3 * x3 + P4 * x4;
+    B2 = P1 * xx1 + P2 * xx2 + P3 * xx3 + P4 * xx4;
+    B3 = P1 * y1 + P2 * y2 + P3 * y3 + P4 * y4;
+    B4 = P1 * yy1 + P2 * yy2 + P3 * yy3 + P4 * yy4;
+    if (B1 > B2 && B1 > B3 && B1 > B4) {
+        b_max = B1;
+        cout << "B1 is optimal solution : " << B1 << endl;
+
+    }
+    else if (B2 > B1&& B2 > B3&& B2 > B4) {
+
+        b_max = B2;
+        cout << "B2 is optimal solution : " << B2 <<endl;
+    }
+    else if (B3 > B1&& B3 > B2&& B3 > B4) {
+
+        b_max = B3;
+        cout << "B3 is optimal solution : " << B3 << endl;;
+    }
+    else {
+        b_max = B4;
+        cout << "B4 is optimal solution : " << B4 << endl;
+    };
+     
+  // Task 2, Fishbern criterion, Bayesian criterion, third information situation
+    cout << "Task 2" <<endl;
+    cout << "Enter n" << endl;
+    cin >> n;
+    p1 = (pow(2, n - 1)) / (pow(2, n) - 1);
+    p2 = (pow(2, n - 2)) / (pow(2, n) - 1);
+    p3 = (pow(2, n - 3)) / (pow(2, n) - 1);
+    p4 = (pow(2, n - 4)) / (pow(2, n) - 1);
+    S = p1 + p2 + p3 + p4;
+    cout << "S = " << S << endl;
+    S1 = p1 * x1 + p2 * x2 + p3 * x3 + p4 * x4;
+    S2 = p1 * xx1 + p2 * xx2 + p3 * xx3 + p4 * xx4;
+    S3 = p1 * y1 + p2 * y2 + p3 * y3 + p4 * y4;
+    S4 = p1 * yy1 + p2 * yy2 + p3 * yy3 + p4 * yy4;
+    if (S1 > S2 && B1 > S3 && B1 > S4) {
+        k = S1;
+        cout << "S1 is optimal solution : " << S1 << endl;
+
+    }
+    else if (S2 > S1 && S2 > S3 && S2 > S4) {
+
+        k = S2;
+        cout << "S2 is optimal solution : " << S2 << endl;;
+    }
+    else if (S3 > S1 && S3 > S2 && S3 > S4) {
+
+        k = S3;
+        cout << "S3 is optimal solution : " << S3 << endl;
+    }
+    else {
+        k = S4;
+        cout << "S4 is optimal solution : " << S4 << endl;
+    };
+    // Task 3, Bernoulli- Laplas, fourth information situation
+
+    cout << "Task 3" << endl;
+    pp1 = pp2 = pp3 = pp4 = 1 / n;
+    G1 = pp1 * x1 + pp2 * x2 + pp3 * x3 + pp4 * x4;
+    G2 = pp1 * xx1 + pp2 * xx2 + pp3 * xx3 + pp4 * xx4;
+    G3 = pp1 * y1 + pp2 * y2 + pp3 * y3 + pp4 * y4;
+    G4 = pp1 * yy1 + pp2 * yy2 + pp3 * yy3 + pp4 * yy4;
+    if (G1 > G2 && G1 > G3 && G1 > G4) {
+        g_max = G1;
+        cout << "G1 is optimal solution : " << G1 << endl;
+
+    }
+    else if (G2 > G1&& G2 > G3&& G2 > G4) {
+
+        g_max = G2;
+        cout << "G2 is optimal solution : " << G2 << endl;
+    }
+    else if (G3 > G1&& G3 > G2&& G3 > G4) {
+
+        g_max = G3;
+        cout << "G3 is optimal solution : " << G3 << endl;
+    }
+    else {
+        g_max = G4;
+        cout << "G4 is optimal solution : " << G4 << endl;
+
+        //Task 4, Hodges-Lehmann criterion
+        cout << "Task 4" << endl;;
+        double m1[4] = { x1, x2, x3, x4 };
+        double min1 = m1[0];
+        for (int i = 0; i < 4; ++i)
+        {
+            if (m1[i] < min1)
+            {
+                min1 = m1[i];
+            }
+        }
+        double m2[4] = { xx1, xx2, xx3, xx4 };
+        double min2 = m2[0];
+        for (int i = 0; i < 4; ++i)
+        {
+            if (m2[i] < min2)
+            {
+                min2 = m2[i];
+            }
+        }
+        double m3[4] = { y1, y2, y3, y4 };
+        double min3 = m3[0];
+        for (int i = 0; i < 4; ++i)
+        {
+            if (m3[i] < min3)
+            {
+                min3 = m3[i];
+            }
+        }
+        double m4[4] = { yy1, yy2, yy3, yy4 };
+        double min4 = m4[0];
+        for (int i = 0; i < 4; ++i)
+        {
+            if (m4[i] < min4)
+            {
+                min4 = m4[i];
+            }
+        }
+         
+        HL1 = min1 - B1;
+        HLl1 = B1 * 1;
+        HL2 = min2 - B2;
+        HLl2 = B2 * 1;
+        HL3 = min3 - B3;
+        HLl3 = B3 * 1;
+        HL4 = min4 - B4;
+        HLl4 = B4 * 1;
+        la0 = (HLl3 + HLl4) / (HL3 - HL4);
+        cout << "Optimal solution for x4 is : " << la0 << endl;
+        cout << "[ 0 ;" << la0 << "]"<< endl;
+        cout <<"["<<la0 << ";" << "1 ]"<< endl;
+
+
+    } 
+
+}
