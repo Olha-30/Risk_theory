@@ -1,0 +1,79 @@
+#include <iostream>
+#include <math.h>
+
+using  namespace std; 
+
+int main()
+{  //Variant 1
+    //  Bayesian criterion  and dispersion
+    double B1, x1, x2, x3, P1, P2, P3;
+    double B2, xx1, xx2, xx3;
+    double B3, y1, y2, y3;
+    double B4, yy1, yy2, yy3;
+    double D1, D2, D3, D4, X;
+    double F1, F2, F3, F4;
+
+    cout << "Input first string" << endl;
+    cin >> x1 >> x2 >> x3;
+    cout << "Input second string" << endl;
+    cin >> xx1 >> xx2 >> xx3;
+    cout << "Input third string" << endl;
+    cin >> y1 >> y2 >> y3;
+    cout << "Input fourth string" << endl;
+    cin >> yy1 >> yy2 >> yy3;
+    cout << "Input P1" << endl;
+    cin >> P1;
+    cout << "Input P2" << endl;
+    cin >> P2;
+    cout << "Input P3" << endl;
+    cin >> P3;
+
+    //Bayesian convolution
+
+    B1 = P1 * x1 + P2 * x2 + P3 * x3;
+    B2 = P1 * xx1 + P2 * xx2 + P3 * xx3;
+    B3 = P1 * y1 + P2 * y2 + P3 * y3;
+    B4 = P1 * yy1 + P2 * yy2 + P3 * yy3;
+    cout << "B1+: "<< B1 << " " << "B2+: " << B2 << " " << "B3+: " << B3 << " " << "B4+: " << B4 << endl;
+
+    // minimal dispersion 
+
+    D1 = pow(x1 - B1, 2) * P1 + pow(x2 - B1, 2) * P2 + pow(x3 - B1, 2) * P3;
+    D2 = pow(xx1 - B2, 2) * P1 + pow(xx2 - B2, 2) * P2 + pow(xx3 - B2, 2) * P3;
+    D3 = pow(y1 - B3, 2) * P1 + pow(y2 - B3, 2) * P2 + pow(y3 - B3, 2) * P3;
+    D4 = pow(yy1 - B4, 2) * P1 + pow(yy2 - B4, 2) * P2 + pow(yy3 - B4, 2) * P3;
+    double m[4] = { D1, D2, D3, D4 };
+    double min = m[0];
+    for (int i = 0; i < 4; ++i)
+    {
+        if (m[i] < min)
+        {
+            min = m[i];
+        }
+    }
+    cout << "D1: " << D1 << " " << "D2: " << D2 << " " << "D3: " << D3 << " " << "D4: " << D4 << endl;
+    cout << "Min: " << min << endl;
+    F1 = B1 * D1;
+    F2 = B2 * D2;
+    F3 = B3 * D3;
+    F4 = B4 * D4;
+    cout << "F1: " << F1 << " " << "F2: " << F2 << " " << "F3: " << F3 << " " << "F4: " << F4 << endl;
+     
+    double ma[4] = {F1, F2, F3, F4};
+    double max = ma[0];
+
+    for (int i = 0; i < 4; ++i) {
+        if (ma[i] > max) {
+            max = ma[i];
+        }
+    }
+
+    cout << "Best choice is: " << max << endl;
+
+    
+
+
+
+
+
+}
